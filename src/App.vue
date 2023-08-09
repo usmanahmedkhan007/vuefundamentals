@@ -1,38 +1,32 @@
-<script setup>
-import { ref } from 'vue'
-// import HelloWorld from './components/HelloWorld.vue'
-// import TheWelcome from './components/TheWelcome.vue'
-let message = ref('hello world')
-let number = ref(10)
-function getRandomNumber()
-{
-  return Math.random()
-}
-</script>
-
-
 <template>
-  <h1>Text interpolation and data binding</h1>
-  <p>{{ message.split(" ").reverse().join(" ") }}</p>
+  <h1 v-bind="attributes">Binding attributes using v-bind</h1>
+
+  <button v-bind:disabled="true">Submit</button>
+
+  <!-- <p>{{ message.split(" ").reverse().join(" ") }}</p>
   <p>{{ number + 20 }}</p>
   <p>{{ true ? 'Yes' : 'No' }}</p>
-  <p>{{ getRandomNumber() }}</p>
-  <!-- <header>
-    <img alt="Vue logo"
-         class="logo"
-         src="./assets/logo.svg"
-         width="125"
-         height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main> -->
+  <p>{{ getRandomNumber() }}</p> -->
 </template>
+
+
+<script setup>
+import { ref } from 'vue'
+
+const dynamicId = ref('headingId')
+
+const attributes = ref({
+  id: 'headingId',
+  class: 'content'
+})
+// let message = ref('hello world')
+// let number = ref(10)
+// function getRandomNumber()
+// {
+//   return Math.random()
+// }
+
+</script>
 
 <style scoped>
 header {
