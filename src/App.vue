@@ -1,15 +1,24 @@
 <template>
-  <p>{{ rawHtml }}</p>
-  <p v-html="rawHtml"></p>
-
   <div :class="[{ active: isActive }, 'text-blue']"
        class="heading">Binding classes</div>
+
+  <p :style="[styles, activeStyles]">Binding inline styles in vue.js</p>
 </template>
 
 
 <script setup>
 import { ref } from 'vue'
 
+const styles = ref({
+  color: 'red',
+  fontSize: '24px'
+})
+
+const activeStyles = ref({
+  textTransform: 'uppercase',
+  'text-decoration': 'line-through'
+})
+const activeColor = ref('blue')
 const classes = ref({
   active: true,
   'text-blue': true
@@ -17,7 +26,6 @@ const classes = ref({
 
 const isActive = ref(true)
 const color = ref(true)
-const rawHtml = ref('<span style="color : red;">This should be red</span>')
 
 </script>
 
