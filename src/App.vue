@@ -1,58 +1,33 @@
 <template>
-  <h1 v-bind="attributes">Binding attributes using v-bind</h1>
+  <p>{{ rawHtml }}</p>
+  <p v-html="rawHtml"></p>
 
-  <button v-bind:disabled="true">Submit</button>
-
-  <!-- <p>{{ message.split(" ").reverse().join(" ") }}</p>
-  <p>{{ number + 20 }}</p>
-  <p>{{ true ? 'Yes' : 'No' }}</p>
-  <p>{{ getRandomNumber() }}</p> -->
+  <div :class="[{ active: isActive }, 'text-blue']"
+       class="heading">Binding classes</div>
 </template>
 
 
 <script setup>
 import { ref } from 'vue'
 
-const dynamicId = ref('headingId')
-
-const attributes = ref({
-  id: 'headingId',
-  class: 'content'
+const classes = ref({
+  active: true,
+  'text-blue': true
 })
-// let message = ref('hello world')
-// let number = ref(10)
-// function getRandomNumber()
-// {
-//   return Math.random()
-// }
+
+const isActive = ref(true)
+const color = ref(true)
+const rawHtml = ref('<span style="color : red;">This should be red</span>')
 
 </script>
 
 <style scoped>
-header {
-  line-height: 1.5;
+.active {
+  font-size: 2.4rem;
+  /* color: red; */
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.text-blue {
+  color: blue;
 }
 </style>
